@@ -1,0 +1,13 @@
+{
+  "name": "travellocal",
+  "description": "experience the city as a local",
+  "dependencies": {
+    "body-parser": "latest",
+    "busboy": "^0.2.11",
+    "connect-busboy": "0.0.2",
+    "express": "latest",
+    "express-session": "^1.11.3",
+    "mongoose": "latest",
+    "mongoose-validator": "^1.2.4"
+  }
+}

@@ -1,0 +1,32 @@
+<div ng-controller='userController'>
+	<div class="row" ng-controller='userController'>
+		<div class="login col-xs-6 pull-left" >
+			<h2>Login</h2>
+			<input type="text" placeholder='Email Id' ng-model='login.username'><br>
+			<input type="password" placeholder='password' ng-model='login.password'><br>
+			<input type="submit" ng-click='Login()' class='btn btn-info'>
+			<div class="alert alert-danger" ng-if='errorsl.error != undefinded' style='width: 200px; text-align: center'>{{errorsl.error}}</div>
+		</div>
+		<div class='registration col-xs-6 pull-right' >
+			<h2>Registration</h2>
+			<input type="text" ng-model='registration.email' placeholder='Email ID'><br>
+			<input type="password" ng-model='registration.password' placeholder='Password'><br>
+			<input type="password" ng-model='registration.confirm_password' placeholder='Confirm Password'><br>
+			<input type="text" ng-model='registration.name' placeholder='Name'><br>
+			<label>Date of Birth</label><br><input type="date" ng-model='registration.age'><br>
+			<label>Origon City</label><br>
+			<select ng-model='registration.city'>
+				<option disabled>Select your origin city</option>
+				<option value='Barcelona'>Barcelona</option>
+				<option value='London'>London</option>
+				<option value='Delhi'>Delhi</option>
+				<option value='New York'>New York</option>
+				<option value='Paris'>Paris</option>
+				<option value='LA'>LA</option>
+			</select><br>
+			<input type="submit" ng-click='Registration()' class='btn btn-info'><br>
+			<div class="alert alert-danger" ng-if='errorsr.length > 0' ng-repeat='error in errorsr'>{{error.error}}</div>
+			<div class='alert alert-success' ng-if='success.success.length > 0 ' style="text-align: center; widht: 200px">{{success.success}}</div>	
+		</div>	
+	</div>
+</div>

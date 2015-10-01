@@ -1,0 +1,20 @@
+<div ng-controller='profileController'>
+	<h3>Edit information about your profile</h3>
+	<form method='post'>
+		<input type="text" ng-model='edituser.name' placeholder='name'><br>
+		<label>Origin City</label>
+		<select ng-model='edituser.city'>
+			<option disabled>Select your origin city</option>
+			<option value='Barcelona'>Barcelona</option>
+			<option value='London'>London</option>
+			<option value='Delhi'>Delhi</option>
+			<option value='New York'>New York</option>
+			<option value='Paris'>Paris</option>
+			<option value='LA'>LA</option>
+		</select><br>
+		<input type="text" ng-model='edituser.description' placeholder='description' cols='50' rows='5'><br>
+		<input type="submit" ng-click='edit()' value='Update information' class='btn btn-info'>
+	</form>
+	
+	<div class="alert alert-success" ng-if='success.success != undefined'>{{success.success}}</div>
+</div>

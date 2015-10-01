@@ -1,0 +1,8 @@
+<div ng-controller='profileController'>
+	<h2>All the users using this site are</h2>
+	<input type="text" ng-model='filter_name' placeholder='search'>
+	<p>{{users}}</p>
+	<ul>
+		<li ng-repeat='user in users | filter: filter_name'>{{user.name}}</li>
+	</ul>
+</div>
