@@ -4,6 +4,22 @@ var profile = require('./../controllers/profiles.js')
 var fs = require('fs');
 module.exports = function(app)
 {
+	app.get('/', function(req, res){
+		res.render('Login&registration')
+	});
+	app.get('/profile', function(req, res)
+	{
+		console.log("id in controllers ", req.session.user_id)
+		if(req.session.user_id)
+		{
+			res.render('Profiles');
+		}
+		else
+		{
+			res.redirect('/');
+		}
+		
+	})
 	app.post('/addUser', function(req, res){
 		user.add(req, res);
 	});

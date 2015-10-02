@@ -4,7 +4,7 @@ module.exports =
 {
 	add: function(req, res)
 	{
-		// console.log("Aman = " + new Date(req.body.age));
+		console.log('coming to backend add function', req.body)
 		var date =  new Date() - new Date(req.body.age) ;
 		var current_date = new Date();
 		if(req.body.password.length > 6 && req.body.password === req.body.confirm_password && date > 568025000000 )
@@ -27,7 +27,7 @@ module.exports =
 						else
 						{
 							console.log('user created');
-							res.json({success: "user succesfully registered"});
+							res.json({success: "User succesfully registered. Please Login to view something awesome"});
 						}
 					});
 				}
@@ -48,7 +48,7 @@ module.exports =
 			{
 				req.session.user_id = user[0]._id;
 				console.log(req.session.user_id);
-				res.json({user: user});
+				res.json(true);
 				
 			}
 			else

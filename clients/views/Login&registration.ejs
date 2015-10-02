@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>Login and registration</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<style>
+		body{
+			background-image: url("/Images/background.jpg");
+			background-size: 100%;
+			background-repeat: no-repeat;
+		}
+		input{
+			padding: 5px;
+			margin: 5px;
+		}
+	</style>
+	<script>
+		var myModule = angular.module('myApp', []);
+		// login and registration factory
+		myModule.factory('registrationFactory', function($http, $window){
+			var factory = {};
+			factory.registration = function(data, callback)
+			{
+				$http.post('/addUser', data).success(function(result){
+					console.log(result);
+					callback(result);
+				})
+			}
+			factory.Login = function(data, callback)
+			{
+				$http.post('/login', data).success(function(result)
+				{
+					if(result == true)
+					{
+						$window.location.href = 'http://localhost:6789/profile'
+					}
+					
+				})
+			}
+
+			return factory;
+		});
+		// login and registratin controller
+		myModule.controller('userController', function($scope, registrationFactory){
+			$scope.errorsr = []; // registration errors
+			$scope.errorsl = []; // login errors
+			$scope.success = {};
+			$scope.result = {};
+			$scope.Registration = function()
+			{
+				registrationFactory.registration($scope.registration, function(data){
+					if(data.success)
+					{
+						$scope.success = data;
+						
+					}
+					else
+					{
+						$scope.errorsr.push(data);
+
+					}
+					
+
+				});
+			},
+			$scope.Login = function()
+			{
+				
+				registrationFactory.Login($scope.login, function(data)
+				{
+					if(data.user)
+					{
+						$scope.result = data;
+						// console.log(id);		
+					}
+					else
+					{
+						$scope.errorsl = data;
+					}
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row" ng-controller='userController'>
+			<div class="login col-xs-6 pull-left">
+				
+				<h2>Login</h2>
+				<input type="text" placeholder='Email Id' ng-model='login.username'><br>
+				<input type="password" placeholder='password' ng-model='login.password'><br>
+				<input type="submit" ng-click='Login()' class='btn btn-info'>
+				<div class="alert alert-danger" ng-if='errorsl.error != undefinded' style='width: 200px; text-align: center'>{{errorsl.error}}</div>
+					
+			</div>
+			<div class='registration col-xs-6 pull-right' >
+				<h2>Registration</h2>
+				<input type="text" ng-model='registration.email' placeholder='Email ID'><br>
+				<input type="password" ng-model='registration.password' placeholder='Password'><br>
+				<input type="password" ng-model='registration.confirm_password' placeholder='Confirm Password'><br>
+				<input type="text" ng-model='registration.name' placeholder='Name'><br>
+				<label>Date of Birth</label><br><input type="date" ng-model='registration.age'><br>
+				<label>Origon City</label><br>
+				<select ng-model='registration.city'>
+					<option disabled>Select your origin city</option>
+					<option value='Barcelona'>Barcelona</option>
+					<option value='London'>London</option>
+					<option value='Delhi'>Delhi</option>
+					<option value='New York'>New York</option>
+					<option value='Paris'>Paris</option>
+					<option value='LA'>LA</option>
+				</select><br>
+				<input type="submit" ng-click='Registration()' class='btn btn-info'><br>
+				<div class="alert alert-danger" ng-if='errorsr.length > 0' ng-repeat='error in errorsr'>{{error.error}}</div>
+				<div class='alert alert-success' ng-if='success.success.length > 0 ' style="text-align: center; widht: 200px">{{success.success}}</div>	
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

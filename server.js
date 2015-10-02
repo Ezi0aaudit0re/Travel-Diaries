@@ -5,7 +5,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var busboy = require('connect-busboy');
 
-app.use(busboy());
+// app.use(busboy());
+app.set('views', path.join(__dirname + '/clients/views'));
+app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 // app.use(bodyParser({uploadDir: path.join(__dirname + '/clients/profile_pictures')}));
 app.use(session({secret: 'Iliketomoveit'}));

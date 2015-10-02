@@ -5,6 +5,7 @@
     "body-parser": "latest",
     "busboy": "^0.2.11",
     "connect-busboy": "0.0.2",
+    "ejs": "^2.3.4",
     "express": "latest",
     "express-session": "^1.11.3",
     "mongoose": "latest",
