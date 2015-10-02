@@ -2,13 +2,17 @@
   "name": "travellocal",
   "description": "experience the city as a local",
   "dependencies": {
+    "angular-ui-router": "^0.2.15",
     "body-parser": "latest",
     "busboy": "^0.2.11",
     "connect-busboy": "0.0.2",
     "ejs": "^2.3.4",
     "express": "latest",
     "express-session": "^1.11.3",
+    "install": "^0.1.8",
     "mongoose": "latest",
-    "mongoose-validator": "^1.2.4"
+    "mongoose-validator": "^1.2.4",
+    "npm": "^3.3.5",
+    "socket.io": "^1.3.7"
   }
 }

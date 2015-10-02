@@ -47,6 +47,7 @@ module.exports =
 			if(user.length > 0)
 			{
 				req.session.user_id = user[0]._id;
+				req.session.city = user[0].city
 				console.log(req.session.user_id);
 				res.json(true);
 				

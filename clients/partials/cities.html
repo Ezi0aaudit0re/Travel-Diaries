@@ -1,0 +1,20 @@
+
+
+<div class='row' ng-controller='citiesController'>
+	<a ui-sref='cities.topics' ng-click="cities('Barcelona')">
+		<div id='Barcelona' ui-sref='cities.topics' ng-mouseover='style= opacity: 1.0'>
+			<img src="http://www.telegraph.co.uk/inluxury/2854/1378306097546/sagrada_familia_ba_2558456ajpg/ALTERNATES/w940-land/Sagrada_Familia_Ba_2558456a.jpg" alt="barcelona image" height='400px' width='400px'>
+			<h3>Barcelona</h3>
+		</div>
+		<div id='Delhi'></div>
+	</a>
+	
+	
+<!-- 	<a ui-sref='cities.topics'>Delhi</a>
+	<a ui-sref='cities.topics'>London</a>
+	<a ui-sref='cities.topics'>LA</a>
+	<a ui-sref='cities.topics'>Paris</a> -->
+	<div ui-view>
+		
+	</div>
+</div>
